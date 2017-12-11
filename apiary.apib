@@ -1,0 +1,127 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# Umka Mall
+
+Набросок API для мобильного клиента
+
+## Категории [/categories]
+
+### Список всех категорий [GET]
+
+#### Свойства элеметов ответа
+
+|                  |    Тип    |                  Описание                   |
+|------------------|-----------|---------------------------------------------|
+| *id*             | `int`     | Идентификатор категории                     |
+| *parent_id*      | `int`     | Идентификатор родительской категории        |
+| *title*          | `string`  | Название категории                          |
+| *image*          | `string`  | Путь к изображению                          |
+| *sort*           | `int`     | Индекс для сортировки категорий             |
+
++ Response 200 (application/json)
+
+    [
+        {
+            "id": 2,
+            "parent_id": -1,
+            "title": "Компьютерная техника",
+            "image": "https://umkamall.ru/uploads/store/category/1e5e8dde68d44a05c865fd30f0de503f.jpg",
+            "sort": 1
+        }, {
+            "id": 12,
+            "parent_id": 2,
+            "title": "Планшеты",
+            "image": "https://umkamall.ru/uploads/store/category/1e5e8dde68d44a05c865fd30f0de503f.jpg",
+            "sort": 1
+        }, {
+            "id": 13,
+            "parent_id": 2,
+            "title": "Ноутбуки",
+            "image": "https://umkamall.ru/uploads/store/category/d15a2bac81bd2e42b0eadda2c929124a.jpg",
+            "sort": 2
+        }
+    ]
+
+## Товар [/product/{productId}]
+
+### Получение детальной информации и товаре [GET]
+
+#### Свойства ответа
+
+|                  |           |     Тип      |                     Описание                 |
+|------------------|-----------|--------------|----------------------------------------------|
+| *id*             |           | `int`        | Идентификатор товара                         |
+| *type_id*        |           | `int`        | Идентификатор типа товара                    |
+| *category_id*    |           | `int`        | Идентификатор категории                      |
+| *sku*            |           | `string`     | Артикул                                      |
+| *name*           |           | `string`     | Название товара                              |
+| *price*          |           | `decimal`    | Цена                                         |
+| *discount_price* |           | `decimal`    | Цена после скидки                            |
+| *discount*       |           | `decimal`    | Размер скидки                                |
+| *description*    |           | `decimal`    | Полное описание товара                       |
+| *producer_name*  |           | `string`     | Производитель                                |
+| *width*          |           | `decimal`    | ШИрина товара                                |
+| *height*         |           | `decimal`    | Высота товара                                |
+| *length*         |           | `decimal`    | Длина товара                                 |
+| *weight*         |           | `decimal`    | Вес товара                                   |
+| *images*         |           | `[[object]]` | Массив изображений                           |
+|                  | *id*      | `int`        | Идентификатор изображения                    |
+|                  | *preview* | `string`     | URL превью                                   |
+|                  | *full*    | `string`     | URL полноразмерного изображения              |
+|                  | *sort*    | `int`        | Индекс для сортировки изображений            |
+| *attributes*     |           | `[[object]]` | Массив значений параметров                   |
+|                  | *id*      | `int`        | Идентификатор свойства                       |
+|                  | *value*   | `string`     | Строковое значение свойства                  |
+
++ Parameters
+    + productId (number) - идентификатор товара
+
++ Response 200 (application/json)
+
+    {
+        "id": 32414,
+        "type_id": 213,
+        "category_id": 12,
+        "sku": "W830BT",
+        "name": "Наушники EDIFIER W830BT",
+        "price": 6240.0,
+        "discount_price": 4280.0,
+        "discount": 1960.0,
+        "description": "Полноразмерные наушники EDIFIER W830BT - это новое поколение наушников с 40-миллиметровыми драйверами и усиленными неодимовыми магнитами. Пластиковое оголовье с внутренней стороны отделано мягким материалом, а широкие диапазоны регулировки позволяют подстроить размер под любые анатомические особенности.",
+        "producer_name": "EDIFIER",
+        "width": 271.0,
+        "height": 234.0,
+        "length": 83.0,
+        "weight": 100.0,
+        "images": [
+            {
+                "id": 3124,
+                "preview": "https://umkamall.ru/uploads/thumbs/store/product/60x60_f620a632cdd384d7779cfc0d4056f313.jpg",
+                "full": "https://umkamall.ru/uploads/store/product/f620a632cdd384d7779cfc0d4056f313.jpg",
+                "sort": 0
+            }, {
+                "id": 3125,
+                "preview": "https://umkamall.ru/uploads/thumbs/store/product/60x60_bb4d83ad3b9e7ac0966a852abd62cd80.jpg",
+                "full": "https://umkamall.ru/uploads/store/product/bb4d83ad3b9e7ac0966a852abd62cd80.jpg",
+                "sort": 1
+            }, {
+                "id": 3126,
+                "preview": "https://umkamall.ru/uploads/thumbs/store/product/60x60_f4a1f21d0afc552685f34d877220d772.jpg",
+                "full": "https://umkamall.ru/uploads/store/product/f4a1f21d0afc552685f34d877220d772.jpg",
+                "sort": 2
+            }
+        ],
+        "attributes": [
+            {
+                "id": 104,
+                "value": "полноразмерные"
+            }, {
+                "id": 105,
+                "value": "беспроводные наушники"
+            }, {
+                "id": 106,
+                "value": "Bluetooth"
+            }
+        ]
+    }
