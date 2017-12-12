@@ -23,23 +23,105 @@ HOST: http://polls.apiblueprint.org/
 
     [
         {
+            "id": 1,
+            "parent_id": -1,
+            "title": "Товары из Китая",
+            "image": "https://umkamall.ru/uploads/thumbs/store/category/50x50_7fee7528972ff606641fef97e4bd16bc.png",
+            "sort": 0
+        }, {
             "id": 2,
             "parent_id": -1,
-            "title": "Компьютерная техника",
-            "image": "https://umkamall.ru/uploads/store/category/1e5e8dde68d44a05c865fd30f0de503f.jpg",
+            "title": "Sale",
+            "image": "https://umkamall.ru/uploads/thumbs/store/category/50x50_8021f3c189f2f61f5e9298149d39a089.png",
             "sort": 1
+        }, {
+            "id": 3,
+            "parent_id": -1,
+            "title": "Телефоны и гаджеты",
+            "image": "https://umkamall.ru/uploads/thumbs/store/category/50x50_272d95315839df7b4cb725164414b471.png",
+            "sort": 2
+        }, {
+            "id": 4,
+            "parent_id": -1,
+            "title": "Фото и видео",
+            "image": "https://umkamall.ru/uploads/thumbs/store/category/50x50_d24eb35751ee54a69229b1f9da640999.png",
+            "sort": 3
+        }, {
+            "id": 5,
+            "parent_id": -1,
+            "title": "Аудио",
+            "image": "https://umkamall.ru/uploads/thumbs/store/category/50x50_059943065e920091ac2bdc57187d1d44.png",
+            "sort": 4
+        }, {
+            "id": 6,
+            "parent_id": -1,
+            "title": "Компьютерная техника",
+            "image": "https://umkamall.ru/uploads/thumbs/store/category/50x50_d1e933b761424d5299e9527ee41fb2a9.png",
+            "sort": 5
+        }, {
+            "id": 7,
+            "parent_id": -1,
+            "title": "Для дома и дачи",
+            "image": "https://umkamall.ru/uploads/thumbs/store/category/50x50_b08e0b053cb84d9ed21acf9c5ad448ae.png",
+            "sort": 6
+        }, {
+            "id": 8,
+            "parent_id": -1,
+            "title": "Бытовая техника",
+            "image": "https://umkamall.ru/uploads/thumbs/store/category/50x50_5e7477923e6b52ddde9ce0228d1ac846.png",
+            "sort": 7
+        }, {
+            "id": 9,
+            "parent_id": -1,
+            "title": "Спорт и туризм",
+            "image": "https://umkamall.ru/uploads/thumbs/store/category/50x50_ce84ad2673854ed945bc3e19d7a14681.png",
+            "sort": 8
+        }, {
+            "id": 10,
+            "parent_id": -1,
+            "title": "Детские товары",
+            "image": "https://umkamall.ru/uploads/thumbs/store/category/50x50_2622f339b4cf9f616b3a54539a32860d.png",
+            "sort": 9
+        }, {
+            "id": 11,
+            "parent_id": -1,
+            "title": "Красота и здоровье",
+            "image": "https://umkamall.ru/uploads/thumbs/store/category/50x50_16af63b59da02ea0d94e6826d2fd8ff0.png",
+            "sort": 10
         }, {
             "id": 12,
-            "parent_id": 2,
-            "title": "Планшеты",
-            "image": "https://umkamall.ru/uploads/store/category/1e5e8dde68d44a05c865fd30f0de503f.jpg",
-            "sort": 1
+            "parent_id": -1,
+            "title": "Авто и мототовары",
+            "image": "https://umkamall.ru/uploads/thumbs/store/category/50x50_3de8321e822ba426957b9d335748fc66.png",
+            "sort": 11
         }, {
             "id": 13,
-            "parent_id": 2,
-            "title": "Ноутбуки",
-            "image": "https://umkamall.ru/uploads/store/category/d15a2bac81bd2e42b0eadda2c929124a.jpg",
-            "sort": 2
+            "parent_id": -1,
+            "title": "Инструменты",
+            "image": "https://umkamall.ru/uploads/thumbs/store/category/50x50_24a48f58052f91a8d690a3cf65cdb70e.png",
+            "sort": 12
+        }, {
+            "id": 14,
+            "parent_id": -1,
+            "title": "Хобби",
+            "image": "https://umkamall.ru/uploads/thumbs/store/category/50x50_35b673e167d2667fb565c1c05166387f.png",
+            "sort": 13
+        }, {
+            "id": 15,
+            "parent_id": -1,
+            "title": "Товары для взрослых 18+",
+            "image": "https://umkamall.ru/uploads/thumbs/store/category/50x50_9a4893806264307cde9c9e5cb70ed723.png",
+            "sort": 14
+        }, {
+            "id": 30,
+            "parent_id": 3,
+            "title": "Телефоны",
+            "sort": 0
+        }, {
+            "id": 31,
+            "parent_id": 3,
+            "title": "Умные часы",
+            "sort": 1
         }
     ]
 
@@ -66,7 +148,6 @@ HOST: http://polls.apiblueprint.org/
 | *length*         |           | `decimal`    | Длина товара                                 |
 | *weight*         |           | `decimal`    | Вес товара                                   |
 | *images*         |           | `[[object]]` | Массив изображений                           |
-|                  | *id*      | `int`        | Идентификатор изображения                    |
 |                  | *preview* | `string`     | URL превью                                   |
 |                  | *full*    | `string`     | URL полноразмерного изображения              |
 |                  | *sort*    | `int`        | Индекс для сортировки изображений            |
@@ -96,20 +177,29 @@ HOST: http://polls.apiblueprint.org/
         "weight": 100.0,
         "images": [
             {
-                "id": 3124,
                 "preview": "https://umkamall.ru/uploads/thumbs/store/product/60x60_f620a632cdd384d7779cfc0d4056f313.jpg",
                 "full": "https://umkamall.ru/uploads/store/product/f620a632cdd384d7779cfc0d4056f313.jpg",
                 "sort": 0
             }, {
-                "id": 3125,
                 "preview": "https://umkamall.ru/uploads/thumbs/store/product/60x60_bb4d83ad3b9e7ac0966a852abd62cd80.jpg",
                 "full": "https://umkamall.ru/uploads/store/product/bb4d83ad3b9e7ac0966a852abd62cd80.jpg",
                 "sort": 1
             }, {
-                "id": 3126,
                 "preview": "https://umkamall.ru/uploads/thumbs/store/product/60x60_f4a1f21d0afc552685f34d877220d772.jpg",
                 "full": "https://umkamall.ru/uploads/store/product/f4a1f21d0afc552685f34d877220d772.jpg",
                 "sort": 2
+            }, {
+                "preview": "https://umkamall.ru/uploads/thumbs/store/china_product/2395/60x60_020c163b08612587dd588a43ffae9cdb.jpg",
+                "full": "https://umkamall.ru/uploads/store/china_product/2395/020c163b08612587dd588a43ffae9cdb.jpg",
+                "sort": 3
+            }, {
+                "preview": "https://umkamall.ru/uploads/thumbs/store/china_product/2395/60x60_7e1c76362c7f1ade1218b582ad112847.jpg",
+                "full": "https://umkamall.ru/uploads/store/china_product/2395/7e1c76362c7f1ade1218b582ad112847.jpg",
+                "sort": 4
+            }, {
+                "preview": "https://umkamall.ru/uploads/thumbs/store/china_product/226/60x60_b249696951bb79b69f2d44524965ce1a.jpg",
+                "full": "https://umkamall.ru/uploads/store/china_product/226/b249696951bb79b69f2d44524965ce1a.jpg",
+                "sort": 5
             }
         ],
         "attributes": [
