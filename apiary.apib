@@ -85,6 +85,12 @@ HOST: http://polls.apiblueprint.org/
                             "sort": 3
                         }
                     ]
+                }, {
+                    "id": 197,
+                    "title": "Количество SIM-карт",
+                    "type": 6,
+                    "sort": 1,
+                    "is_filter": true
                 }
             ]
         }
@@ -95,6 +101,10 @@ HOST: http://polls.apiblueprint.org/
 
 ### Список категорий [GET]
 
+#### Описание
+
+Возвращается массив списка категорий.
+
 #### Свойства элеметов ответа
 
 |                  |    Тип    |                  Описание                   |
@@ -104,6 +114,7 @@ HOST: http://polls.apiblueprint.org/
 | *title*          | `string`  | Название категории                          |
 | *image*          | `string`  | Путь к изображению                          |
 | *sort*           | `int`     | Индекс для сортировки категорий             |
+| *attributes*     | `int[]`   | Массив идентификаторов атрибутов            |
 
 + Response 200 (application/json)
 
@@ -113,7 +124,8 @@ HOST: http://polls.apiblueprint.org/
             "parent_id": -1,
             "title": "Товары из Китая",
             "image": "https://umkamall.ru/uploads/thumbs/store/category/50x50_7fee7528972ff606641fef97e4bd16bc.png",
-            "sort": 0
+            "sort": 0,
+            "attributes": [240]
         }, {
             "id": 2,
             "parent_id": -1,
@@ -202,7 +214,8 @@ HOST: http://polls.apiblueprint.org/
             "id": 30,
             "parent_id": 3,
             "title": "Телефоны",
-            "sort": 0
+            "sort": 0,
+            "attributes": [195, 197, 240]
         }, {
             "id": 31,
             "parent_id": 3,
@@ -217,29 +230,32 @@ HOST: http://polls.apiblueprint.org/
 
 #### Свойства ответа
 
-|                  |           |     Тип      |                     Описание                 |
-|------------------|-----------|--------------|----------------------------------------------|
-| *id*             |           | `int`        | Идентификатор товара                         |
-| *type_id*        |           | `int`        | Идентификатор типа товара                    |
-| *category_id*    |           | `int`        | Идентификатор категории                      |
-| *sku*            |           | `string`     | Артикул                                      |
-| *name*           |           | `string`     | Название товара                              |
-| *price*          |           | `decimal`    | Цена                                         |
-| *discount_price* |           | `decimal`    | Цена после скидки                            |
-| *discount*       |           | `decimal`    | Размер скидки                                |
-| *description*    |           | `decimal`    | Полное описание товара                       |
-| *producer_name*  |           | `string`     | Производитель                                |
-| *width*          |           | `decimal`    | ШИрина товара                                |
-| *height*         |           | `decimal`    | Высота товара                                |
-| *length*         |           | `decimal`    | Длина товара                                 |
-| *weight*         |           | `decimal`    | Вес товара                                   |
-| *images*         |           | `[[object]]` | Массив изображений                           |
-|                  | *preview* | `string`     | URL превью                                   |
-|                  | *full*    | `string`     | URL полноразмерного изображения              |
-|                  | *sort*    | `int`        | Индекс для сортировки изображений            |
-| *attributes*     |           | `[[object]]` | Массив значений параметров                   |
-|                  | *id*      | `int`        | Идентификатор свойства                       |
-|                  | *value*   | `string`     | Строковое значение свойства                  |
+|                  |                 |     Тип      |                     Описание                 |
+|------------------|-----------------|--------------|----------------------------------------------|
+| *id*             |                 | `int`        | Идентификатор товара                         |
+| *type_id*        |                 | `int`        | Идентификатор типа товара                    |
+| *category_id*    |                 | `int`        | Идентификатор категории                      |
+| *sku*            |                 | `string`     | Артикул                                      |
+| *name*           |                 | `string`     | Название товара                              |
+| *price*          |                 | `decimal`    | Цена                                         |
+| *discount_price* |                 | `decimal`    | Цена после скидки                            |
+| *discount*       |                 | `decimal`    | Размер скидки                                |
+| *description*    |                 | `decimal`    | Полное описание товара                       |
+| *producer_name*  |                 | `string`     | Производитель                                |
+| *width*          |                 | `decimal`    | ШИрина товара                                |
+| *height*         |                 | `decimal`    | Высота товара                                |
+| *length*         |                 | `decimal`    | Длина товара                                 |
+| *weight*         |                 | `decimal`    | Вес товара                                   |
+| *images*         |                 | `[[object]]` | Массив изображений                           |
+|                  | *preview*       | `string`     | URL превью                                   |
+|                  | *full*          | `string`     | URL полноразмерного изображения              |
+|                  | *sort*          | `int`        | Индекс для сортировки изображений            |
+| *attributes*     |                 | `[[object]]` | Массив значений параметров                   |
+|                  | *id*            | `int`        | Идентификатор свойства                       |
+|                  | *number_value*  | `decimal`    | Числовое значение свойства                   |
+|                  | *string_value*  | `string`     | Строковое значение свойства                  |
+|                  | *option_value*  | `int`        | Идентификатор значения свойства              |
+|                  | *boolean_value* | `boolean`    | Булевое значение свойства                    |
 
 + Parameters
     + productId (number) - идентификатор товара
