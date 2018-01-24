@@ -5,9 +5,15 @@ HOST: http://polls.apiblueprint.org/
 
 Набросок API для мобильного клиента
 
-## Идентификация
+## Ошибки
 
-Запросы от авторизированных пользователей отправляются с дополнительным заголовком `UM-Session-Id`.
+
+
+## HTTP-заголовки
+
+### UM-Session-Id
+
+Все запросы отправляются с заголовком `UM-Session-Id`. Исключение составляет первый запрос после установки приложения. Ответ сервера может содержать `UM-Session-Id`, в таком случае клиентом считается, что сессия обновлена.
 
 ## Атрибуты [/attributes]
 
@@ -100,6 +106,59 @@ HOST: http://polls.apiblueprint.org/
         }
     ]
 
+
+## Каталог [/catalog/{categoryId}]
+
+### Списка товаров в категории [GET]
+
+#### Свойства элеметов ответа
+
+|                  |                 |     Тип      |                      Описание                   |
+|------------------|-----------------|--------------|-------------------------------------------------|
+| *id*             |                 | `int`        | Идентификатор товара                            |
+| *name*           |                 | `string`     | Название товара                                 |
+| *price*          |                 | `decimal`    | Цена                                            |
+| *discount_price* |                 | `decimal`    | Цена после скидки                               |
+| *images*         |                 | `[[object]]` | Массив изображений, содержащий только 1 элемент |
+|                  | *preview*       | `string`     | URL микро-превью (60 px)                        |
+|                  | *large*         | `string`     | URL изображения крупного размера (400 px)       |
+|                  | *full*          | `string`     | URL полноразмерного изображения                 |
+|                  | *sort*          | `int`        | Индекс для сортировки изображений               |
+
++ Parameters
+    + categoryId (number) - идентификатор категории
+
++ Response 200 (application/json)
+
+    [
+        {
+            "id": 32414,
+            "name": "Наушники EDIFIER W830BT",
+            "price": 6240,
+            "discount_price": 4280,
+            "images": [
+                {
+                    "preview": "https://umkamall.ru/uploads/thumbs/store/product/60x60_f620a632cdd384d7779cfc0d4056f313.jpg",
+                    "large": "https://umkamall.ru/uploads/thumbs/store/product/400x400_f620a632cdd384d7779cfc0d4056f313.jpg",
+                    "full": "https://umkamall.ru/uploads/store/product/f620a632cdd384d7779cfc0d4056f313.jpg",
+                    "sort": 0
+                }
+            ]
+        },
+        {
+            "id": 11744,
+            "name": "Kotion Each G2000 синие",
+            "price": 1260,
+            "images": [
+                {
+                    "preview": "https://umkamall.ru/uploads/thumbs/store/product/60x60_fcf3e39698d7df40e400ff6aaec722a4.jpg",
+                    "large": "https://umkamall.ru/uploads/thumbs/store/product/400x400_fcf3e39698d7df40e400ff6aaec722a4.jpg",
+                    "full": "https://umkamall.ru/uploads/store/product/fcf3e39698d7df40e400ff6aaec722a4.jpg",
+                    "sort": 0
+                }
+            ]
+        }
+    ]
 
 ## Категории [/categories]
 
@@ -228,6 +287,7 @@ HOST: http://polls.apiblueprint.org/
         }
     ]
 
+
 ## Товар [/product/{productId}]
 
 ### Получение детальной информации и товаре [GET]
@@ -237,7 +297,6 @@ HOST: http://polls.apiblueprint.org/
 |                  |                 |     Тип      |                     Описание                 |
 |------------------|-----------------|--------------|----------------------------------------------|
 | *id*             |                 | `int`        | Идентификатор товара                         |
-| *type_id*        |                 | `int`        | Идентификатор типа товара                    |
 | *category_id*    |                 | `int`        | Идентификатор категории                      |
 | *sku*            |                 | `string`     | Артикул                                      |
 | *name*           |                 | `string`     | Название товара                              |
@@ -252,7 +311,6 @@ HOST: http://polls.apiblueprint.org/
 | *weight*         |                 | `decimal`    | Вес товара                                   |
 | *images*         |                 | `[[object]]` | Массив изображений                           |
 |                  | *preview*       | `string`     | URL микро-превью (60 px)                     |
-|                  | *middle*        | `string`     | URL изображения среднего размера (135 px)    |
 |                  | *large*         | `string`     | URL изображения крупного размера (400 px)    |
 |                  | *full*          | `string`     | URL полноразмерного изображения              |
 |                  | *sort*          | `int`        | Индекс для сортировки изображений            |
@@ -286,6 +344,7 @@ HOST: http://polls.apiblueprint.org/
         "images": [
             {
                 "preview": "https://umkamall.ru/uploads/thumbs/store/product/60x60_f620a632cdd384d7779cfc0d4056f313.jpg",
+                "large": "https://umkamall.ru/uploads/thumbs/store/product/400x400_f620a632cdd384d7779cfc0d4056f313.jpg",
                 "full": "https://umkamall.ru/uploads/store/product/f620a632cdd384d7779cfc0d4056f313.jpg",
                 "sort": 0
             }, {
@@ -324,7 +383,7 @@ HOST: http://polls.apiblueprint.org/
         ]
     }
     
-    
+
 ## Заказы [/orders]
 
 ### Получение истории заказов [GET]
